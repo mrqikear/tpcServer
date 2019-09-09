@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="Dao.DltElectricityDao">
+
+    <!-- resultMap标签:映射实体与表
+         type属性：表示实体全路径名
+         id属性：为实体与表的映射取一个任意的唯一的名字
+    -->
+    <resultMap type="Domain.DltElectricity" id="DltElectricityMap">
+        <!-- id标签:映射主键属性
+             result标签：映射非主键属性
+             property属性:实体的属性名
+             column属性：表的字段名
+        -->
+        <id property="id" column="id"/>
+        <result property="ammeter_id" column="ammeter_id"/>
+     <result property="activepower" column="activepower"/>
+        <result property="currentd_a" column="currentd_a"/>
+        <result property="currentd_b" column="currentd_b"/>
+        <result property="currentd_c" column="currentd_c"/>
+        <result property="currentd_d" column="currentd_d"/>
+        <result property="voltage_a" column="voltage_a"/>
+        <result property="voltage_b" column="voltage_b"/>
+        <result property="voltage_c" column="voltage_c"/>
+        <result property="voltage_d" column="voltage_d"/>
+    </resultMap>
+
+    <select id="getByid" parameterType="int" resultMap="DltElectricityMap">
+		SELECT
+		* FROM dlt_electricity WHERE id =#{id}
+	</select>
+
+</mapper>
